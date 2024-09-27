@@ -1,0 +1,832 @@
+<index.html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WSpy - Advanced Cell Phone Monitoring for Android & iOS</title>
+<style>
+:root {
+  --primary-color: #4A90E2;
+  --secondary-color: #F5A623;
+  --background-color: #F8F9FA;
+  --text-color: #333333;
+  --accent-color: #6C63FF;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 20px;
+}
+
+.nav-boxes {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-box:hover, .nav-box.active {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.nav-box-plans {
+  background-color: #25D366; /* WhatsApp green color */
+}
+
+.nav-box-plans:hover {
+  background-color: #128C7E; /* Darker shade of WhatsApp green for hover effect */
+}
+
+.hero {
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 150px 0 100px;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animated-circles circle {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  line-height: 1.3;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.demo-button {
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: 2px solid white;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.demo-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  background-color: rgba(255,255,255,0.1);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 80px;
+}
+
+.feature {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+}
+
+.feature-icon {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.feature img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin-top: 50px;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.reviews {
+  background-color: white;
+  padding: 80px 0;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.review {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.review:hover {
+  transform: translateY(-5px);
+}
+
+.review-photo-container {
+  overflow: hidden;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+}
+
+.review-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: photoEntry 1s ease-out;
+}
+
+@keyframes photoEntry {
+  0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.reviewer {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-top: 10px;
+}
+
+.trustpilot {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.trustpilot h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.star-rating {
+  margin-bottom: 10px;
+}
+
+.stars {
+  width: 150px;
+  height: 30px;
+}
+
+#current-rating, #review-count {
+  font-weight: bold;
+  color: #4A90E2;
+}
+
+.faq {
+  margin-top: 80px;
+}
+
+.faq h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.faq-item {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.faq-question {
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 1.5em;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.faq-answer.open {
+  max-height: 1000px; /* Adjust as needed */
+  transition: max-height 0.5s ease-in;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 80px;
+}
+
+.plan {
+  background-color: white;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.plan:hover {
+  transform: scale(1.05);
+}
+
+.plan h3 {
+  font-size: 1.8em;
+  color: var(--primary-color);
+}
+
+.plan-price {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin: 20px 0;
+  color: var(--accent-color);
+}
+
+.plan-features {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.plan-features li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.plan-features li::before {
+  content: '✓';
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 40px 0;
+  margin-top: 80px;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-icon {
+  width: 35px;
+  height: 35px;
+  fill: white;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2em;
+  }
+  
+  .features, .plans {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-boxes {
+    flex-wrap: wrap;
+  }
+  
+  .nav-box {
+    margin: 5px;
+    width: calc(50% - 10px);
+  }
+
+  .cta-button, .demo-button {
+    display: block;
+    margin: 20px auto;
+    max-width: 200px;
+  }
+}
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <svg width="120" height="40" viewBox="0 0 120 40">
+            <text x="5" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#4A90E2">WSpy</text>
+            <circle cx="100" cy="20" r="15" fill="#F5A623"/>
+            <path d="M95 20 L105 20 M100 15 L100 25" stroke="#fff" stroke-width="2"/>
+          </svg>
+        </div>
+        <nav>
+          <ul class="nav-boxes">
+            <li><a href="#features" class="nav-box">Features</a></li>
+            <li><a href="#how-it-works" class="nav-box">How It Works</a></li>
+            <li><a href="#reviews" class="nav-box">Reviews</a></li>
+            <li><a href="#faq" class="nav-box">FAQ</a></li>
+            <li><a href="#plans" class="nav-box nav-box-plans">Plans</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <svg class="hero-background" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4A90E2"/>
+            <stop offset="100%" stop-color="#6C63FF"/>
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#gradient)"/>
+        <g class="animated-circles">
+          <circle cx="100" cy="100" r="20" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="300" cy="200" r="30" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="500" cy="150" r="25" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="700" cy="300" r="40" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="900" cy="100" r="35" fill="rgba(255,255,255,0.1)"/>
+        </g>
+      </svg>
+      <div class="container">
+        <h1>WSpy - Need to know where your kids are? What Messages they get? - You want Protecting Them - Next-Gen Cell Phone Monitoring</h1>
+        <p>Undetectable. Secure. Comprehensive.</p>
+        <p>Advanced monitoring for WhatsApp, Instagram, GPS, and more.</p>
+        <p>Compatible with Android & iOS - No root or jailbreak required.</p>
+        <a href="#plans" class="cta-button">Start Monitoring Now</a>
+        <a href="https://jovaottello.github.io/wspypro--PlatformDemo" class="demo-button">Check Our Demo</a>
+      </div>
+    </section>
+
+    <section id="features" class="features container">
+      <div class="feature">
+        <svg class="feature-icon" viewBox="0 0 100 100" width="80" height="80">
+          <circle cx="50" cy="50" r="45" fill="#4A90E2"/>
+          <path class="whatsapp-icon" d="M50,20 C33.43,20 20,33.43 20,50 C20,66.57 33.43,80 50,80 C66.57,80 80,66.57 80,50 C80,33.43 66.57,20 50,20 Z M65,65 L60,60 C58.39,61.61 56.39,62.92 54.14,63.86 C51.89,64.79 49.47,65.25 47,65.25 C42.09,65.25 37.73,63.45 34.11,59.83 C30.49,56.21 28.69,51.85 28.69,46.94 C28.69,44.47 29.15,42.05 30.09,39.8 C31.03,37.55 32.34,35.55 33.95,33.94 L28.95,28.94 C27.34,30.55 26.03,32.55 25.09,34.8 C24.15,37.05 23.69,39.47 23.69,41.94 C23.69,48.85 26.29,54.71 31.11,59.53 C35.93,64.35 41.79,66.95 48.7,66.95 C51.17,66.95 53.59,66.49 55.84,65.55 C58.09,64.61 60.09,63.3 61.7,61.69 L66.7,66.69 C68.31,65.08 69.62,63.08 70.56,60.83 C71.5,58.58 71.96,56.16 71.96,53.69 C71.96,46.78 69.36,40.92 64.54,36.1 C59.72,31.28 53.86,28.68 46.95,28.68 C44.48,28.68 42.06,29.14 39.81,30.08 C37.56,31.02 35.56,32.33 33.95,33.94 L38.95,38.94 C40.56,37.33 42.56,36.02 44.81,35.08 C47.06,34.14 49.48,33.68 51.95,33.68 C56.86,33.68 61.22,35.48 64.84,39.1 C68.46,42.72 70.26,47.08 70.26,51.99 C70.26,54.46 69.8,56.88 68.86,59.13 C67.92,61.38 66.61,63.38 65,65 Z" fill="#fff"/>
+        </svg>
+        <h3>WhatsApp Monitoring</h3>
+        <p>Track all text and voice messages, including deleted ones.</p>
+      </div>
+      <div class="feature">
+        <img src="ambient-icon.svg" alt="Ambient Listening icon">
+        <h3>Ambient Listening</h3>
+        <p>Discreetly record surroundings without any indication.</p>
+      </div>
+      <div class="feature">
+        <img src="instagram-icon.svg" alt="Instagram icon">
+        <h3>Instagram Insights</h3>
+        <p>Monitor direct messages, stories, and interactions.</p>
+      </div>
+      <div class="feature">
+        <img src="gps-icon.svg" alt="GPS icon">
+        <h3>Real-time GPS Tracking</h3>
+        <p>Pinpoint location with minute-by-minute updates.</p>
+      </div>
+      <div class="feature">
+        <img src="keylogger-icon.svg" alt="Keylogger icon">
+        <h3>Advanced Keylogging</h3>
+        <p>Capture all keystrokes for comprehensive monitoring.</p>
+      </div>
+      <div class="feature">
+        <img src="stealth-icon.svg" alt="Stealth icon">
+        <h3>100% Undetectable</h3>
+        <p>Operate in complete stealth mode on the target device.</p>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="container">
+      <h2>See WSpy in Action</h2>
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/IosWFrvBqOI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <h2>What Our Clients Say</h2>
+        <div class="review-grid">
+          <div class="review">
+            <div class="review-photo-container">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah T." class="review-photo">
+            </div>
+            <p>"WSpy has revolutionized how I ensure my children's online safety. The depth of monitoring is unparalleled."</p>
+            <p class="reviewer">- Sarah T., Parent</p>
+          </div>
+          <div class="review">
+            <div class="review-photo-container">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John D." class="review-photo">
+            </div>
+            <p>"As a business owner, WSpy helps me maintain productivity and security across company devices. It's an essential tool."</p>
+            <p class="reviewer">- John D., CEO</p>
+          </div>
+          <div class="review">
+            <div class="review-photo-container">
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Emily R." class="review-photo">
+            </div>
+            <p>"I was worried about my teenager's online activities. WSpy gave me peace of mind and helped us have important conversations."</p>
+            <p class="reviewer">- Emily R., Mother</p>
+          </div>
+          <div class="review">
+            <div class="review-photo-container">
+              <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="Michael K." class="review-photo">
+            </div>
+            <p>"The GPS tracking feature is a game-changer. I always know where my kids are, and it's incredibly accurate."</p>
+            <p class="reviewer">- Michael K., Father of three</p>
+          </div>
+          <div class="review">
+            <div class="review-photo-container">
+              <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Lisa M." class="review-photo">
+            </div>
+            <p>"WSpy's customer support is outstanding. They guided me through the setup process and were always there when I needed help."</p>
+            <p class="reviewer">- Lisa M., Small Business Owner</p>
+          </div>
+        </div>
+        <div class="trustpilot">
+          <h3>Trusted by Thousands</h3>
+          <div class="star-rating">
+            <svg viewBox="0 0 250 50" class="stars">
+              <defs>
+                <polygon id="star" points="25,3.5 10,49.5 47,19.5 3,19.5 40,49.5"/>
+              </defs>
+              <use href="#star" x="0" fill="url(#star-gradient-1)"/>
+              <use href="#star" x="50" fill="url(#star-gradient-2)"/>
+              <use href="#star" x="100" fill="url(#star-gradient-3)"/>
+              <use href="#star" x="150" fill="url(#star-gradient-4)"/>
+              <use href="#star" x="200" fill="url(#star-gradient-5)"/>
+            </svg>
+          </div>
+          <p><span id="current-rating">4.9</span> out of 5 based on <span id="review-count">2,500+</span> reviews on TrustPilot</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-question">How does WSpy work?</div>
+        <div class="faq-answer">
+          WSpy is installed directly on the target Android or iOS device. Once activated, it operates in stealth mode, sending data to your secure online dashboard. You can then monitor activities remotely from any web browser.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is WSpy legal to use?</div>
+        <div class="faq-answer">
+          WSpy is designed for legal monitoring purposes, such as parental control or employee monitoring on company-owned devices. It's the user's responsibility to ensure they have the right to monitor the target device and comply with local laws.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can WSpy be detected on the target device?</div>
+        <div class="faq-answer">
+          No, WSpy operates in complete stealth mode. It doesn't appear in the app list, doesn't have an icon, and doesn't send any notifications. The user won't know it's installed.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How many devices can I monitor with one license?</div>
+        <div class="faq-answer">
+          Each license is for one device. However, we offer discounts for multiple device monitoring. Contact our sales team for custom packages for businesses or families.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need physical access to the target device?</div>
+        <div class="faq-answer">
+          Yes, you need physical access to the target device for initial installation. After that, all monitoring can be done remotely through your online dashboard.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Does WSpy work on both Android and iOS?</div>
+        <div class="faq-answer">
+          Yes, WSpy is compatible with both Android and iOS devices. No root or jailbreak is required for basic features, but some advanced features may require root access on Android.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How often does WSpy update the monitored data?</div>
+        <div class="faq-answer">
+          WSpy updates monitored data in real-time or near real-time, depending on the target device's internet connection. Most data is available within minutes of the activity occurring.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is my monitored data secure?</div>
+        <div class="faq-answer">
+          Yes, all data is transmitted and stored using military-grade encryption. Only you have access to your dashboard, and we do not share any data with third parties.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What happens if the target device is factory reset?</div>
+        <div class="faq-answer">
+          If the target device is factory reset, WSpy will be uninstalled along with all other data and apps. You would need to reinstall WSpy after the reset.
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do you offer a money-back guarantee?</div>
+        <div class="faq-answer">
+          Yes, we offer a 14-day money-back guarantee. If you're not satisfied with WSpy for any reason, contact our support team within 14 days of purchase for a full refund.
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="plans container">
+      <div class="plan">
+        <h3>1 Month</h3>
+        <div class="plan-price">$1.33/day</div>
+        <p>Total: $39.00</p>
+        <ul class="plan-features">
+          <li>WhatsApp Monitoring</li>
+          <li>Instagram Tracking</li>
+          <li>GPS Location</li>
+          <li>Call History</li>
+          <li>SMS Monitoring</li>
+          <li>24/7 Customer Support</li>
+        </ul>
+        <a href="https://crypto.paybis.com/?refId=23046&cryptoAddress=TDmNRndkr9MJLHPHcNa2oDtdqLRLfrah4m&currencyCodeFrom=USD&currencyCodeTo=USDT-TRC20&amountTo=39" class="cta-button">Get Started</a>
+      </div>
+      <div class="plan">
+        <h3>3 Months</h3>
+        <div class="plan-price">$1.96/day</div>
+        <p>Total: $59.00</p>
+        <ul class="plan-features">
+          <li>All features from 1 Month plan</li>
+          <li>Ambient Listening</li>
+          <li>Keylogger</li>
+          <li>Social Media Tracking</li>
+          <li>Email Monitoring</li>
+          <li>Priority Support</li>
+        </ul>
+        <a href="https://crypto.paybis.com/?refId=23046&cryptoAddress=TDmNRndkr9MJLHPHcNa2oDtdqLRLfrah4m&currencyCodeFrom=USD&currencyCodeTo=USDT-TRC20&amountTo=59" class="cta-button">Best Value</a>
+      </div>
+      <div class="plan">
+        <h3>6 Months</h3>
+        <div class="plan-price">$2.96/day</div>
+        <p>Total: $89.00</p>
+        <ul class="plan-features">
+          <li>All features from 3 Months plan</li>
+          <li>Remote Photo Capture</li>
+          <li>Browser History Tracking</li>
+          <li>App Usage Analytics</li>
+          <li>Geo-fencing Alerts</li>
+          <li>Lifetime Free Upgrades</li>
+        </ul>
+        <a href="https://crypto.paybis.com/?refId=23046&cryptoAddress=TDmNRndkr9MJLHPHcNa2oDtdqLRLfrah4m&currencyCodeFrom=USD&currencyCodeTo=USDT-TRC20&amountTo=89" class="cta-button">Maximum Protection</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 WTSoftware. All rights reserved.</p>
+      <p>NOTICE: WSpy is designed for legal use only. Users must comply with all applicable laws in their jurisdiction.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/447753831282?text=Hi%20I%20need%20help%20to%20Get%20Started%20with%20WSpy" class="whatsapp-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="whatsapp-icon">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+
+  <script>
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const isOpen = answer.classList.contains('open');
+        
+        document.querySelectorAll('.faq-answer').forEach(a => {
+          a.classList.remove('open');
+          a.style.maxHeight = null;
+          a.previousElementSibling.classList.remove('active');
+        });
+
+        if (!isOpen) {
+          answer.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          question.classList.add('active');
+        }
+        
+        question.style.setProperty('--faq-icon', isOpen ? '"+"' : '"-"');
+      });
+    });
+
+    const starRating = document.querySelector('.star-rating');
+    const currentRating = document.getElementById('current-rating');
+    const reviewCount = document.getElementById('review-count');
+
+    function animateRating() {
+      const rating = parseFloat(currentRating.textContent);
+      const fullStars = Math.floor(rating);
+      const partialStar = rating - fullStars;
+
+      for (let i = 1; i <= 5; i++) {
+        const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+        gradient.id = `star-gradient-${i}`;
+        gradient.innerHTML = `
+          <stop offset="0%" stop-color="#F5A623" />
+          <stop offset="${i <= fullStars ? '100%' : i === fullStars + 1 ? partialStar * 100 + '%' : '0%'}" stop-color="#F5A623" />
+          <stop offset="${i <= fullStars ? '100%' : i === fullStars + 1 ? partialStar * 100 + '%' : '0%'}" stop-color="#ddd" />
+          <stop offset="100%" stop-color="#ddd" />
+        `;
+        starRating.querySelector('defs').appendChild(gradient);
+      }
+
+      let count = 0;
+      const interval = setInterval(() => {
+        count += 100;
+        reviewCount.textContent = count.toLocaleString() + '+';
+        if (count >= 2500) {
+          clearInterval(interval);
+        }
+      }, 20);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateRating();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(starRating);
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const navBoxes = document.querySelectorAll('.nav-box');
+      const sections = document.querySelectorAll('section');
+
+      function setActiveNavBox() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - 60) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navBoxes.forEach(box => {
+          box.classList.remove('active');
+          if (box.getAttribute('href').slice(1) === current) {
+            box.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', setActiveNavBox);
+      setActiveNavBox();
+    });
+  </script>
+</body>
+</html>
